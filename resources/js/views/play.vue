@@ -17,7 +17,7 @@
         </div>
 
         <div class="form-group">
-            <input type="text" placeholder="Input Letter" v-model="letter" @input="checkChar" />
+            <input type="text" placeholder="Input Letter" v-model="letter" @input="checkChar"/>
         </div>
 
         <div class="form-group">
@@ -69,12 +69,11 @@ export default {
         checkChar() {
             let c = this.letter || '';
             if (this.char.indexOf(c.toUpperCase()) != this.number) {
-                if (this.miss.indexOf(this.number) === -1) {
+                if (this.miss.indexOf(this.number) == -1) {
                     this.miss.push(this.number)
                 }
-            }
-            else {
-                if (this.hit.indexOf(this.number) === -1) {
+            } else {
+                if (this.hit.indexOf(this.number) == -1) {
                     this.hit.push(this.number)
                 }
             }
@@ -118,7 +117,7 @@ export default {
                 self.letter = '';
                 if (self.generatedNumbers.length >= 26) {
                     clearInterval(handle)
-                    self.saveResult()
+                  //  self.saveResult()
                 }
 
             }, response.data);
