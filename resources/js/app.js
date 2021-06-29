@@ -8,6 +8,7 @@ Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 
 import play from './views/play.vue'
+import list from './views/list.vue'
 
 const router = new VueRouter({
     mode: 'history',
@@ -16,6 +17,11 @@ const router = new VueRouter({
             path: '/new-game/:id',
             name: 'play',
             component: play
+        },
+        {
+            path: '/get',
+            name: 'list',
+            component: list
         },
     ],
 

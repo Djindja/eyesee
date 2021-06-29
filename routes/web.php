@@ -36,6 +36,7 @@ Route::group(["prefix" => "game"], function () {
 
 /* routes for results */
 Route::post('/create', 'App\Http\Controllers\ResultController@store');
+Route::get('/result', 'App\Http\Controllers\ResultController@getAll');
 Route::get('/get', 'App\Http\Controllers\ResultController@index');
 Route::get('/new-game/{id}', 'App\Http\Controllers\GameController@play');
 

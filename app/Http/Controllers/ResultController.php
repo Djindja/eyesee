@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use View;
 use Auth;
 use Request;
 use Response;
@@ -11,22 +12,27 @@ use App\Models\Result;
 class ResultController extends Controller
 {
 
+    public function index()
+    {
+      return View::make('result.index');
+    }
+
       /**
      * Display a listing of resource
      *
      * @return Response
      */
-    public function index()
+    public function getAll()
     {
         try {
-            $result = Result::get();
+            $results = Result::get();
         } catch (Exception $e) {
-            $result = [
+            $results = [
                 'error' => $e->getMessage()
             ];
         }
 
-        return response()->json($result);
+        return response()->json($results);
     }
 
     /**

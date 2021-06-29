@@ -30,7 +30,7 @@
         </div>
 
         <div class="form-group">
-            Hits: {{hit.length}}
+            Hit: {{hit.length}}
             <br>
             Miss: {{miss.length}}
         </div>
@@ -47,7 +47,7 @@ export default {
     name: 'play',
     data() {
         return {
-            number: 0,
+            number: null,
             char: ['','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
             generatedNumbers: [],
             id: this.$route.params.id,
@@ -55,7 +55,7 @@ export default {
             letter: '',
             hit: [],
             miss: [],
-            left: ''
+            errors: []
         }
     },
     methods: {
@@ -92,39 +92,50 @@ export default {
             while (i--) {
                 j = Math.floor(Math.random() * (i+1));
                 let n = nums[j];
-                if (this.generatedNumbers.indexOf(n) != -1) {
-                    return this.randNumber()
+
+
+                if (this.generatedNumbers.length < 26) {
+                    if (this.generatedNumbers.indexOf(n) != -1) {
+                        return this.randNumber()
+                    }
+
+                    this.generatedNumbers.push(nums[j]);
+                    return nums.splice(j,1);
                 }
-                this.generatedNumbers.push(nums[j]);
-                return nums.splice(j,1);
+
+                return []
             }
         },
         startGame() {
             axios.get(`/game/get/${this.id}`).then(response => {
-            this.difficulty = response.data
-
             if (response.data === 'easy') {
                 response.data = 5000;
             } else if(response.data === 'medium') {
                 response.data = 3500;
             } else {
-                response.data = 2000;
+                response.data = 1000;
             }
 
+            this.number = this.randNumber()[0]
+
             var self = this;
-            var handle = setInterval(function() {
-                self.number = self.randNumber()[0]
+            this.handle = setInterval(function() {
                 self.checkChar()
-                self.letter = '';
+
                 if (self.generatedNumbers.length >= 26) {
-                    clearInterval(handle)
+                    clearInterval(this.handle)
                     self.saveResult()
+                    return
                 }
+
+                self.number = self.randNumber()[0]
+                self.letter = '';
 
             }, response.data);
             })
             .catch(e => {
                 this.errors.push(e)
+                console.log(e)
             })
         }
     },
