@@ -7,21 +7,15 @@ import { BootstrapVue } from 'bootstrap-vue'
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 
-import resultList from './views/index.vue'
-import createResult from './views/create.vue'
+import play from './views/play.vue'
 
 const router = new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: '/game',
-            name: 'resultList',
-            component: resultList
-        },
-        {
-            path: '/dashboard/create',
-            name: 'createResult',
-            component: createResult
+            path: '/new-game/:id',
+            name: 'play',
+            component: play
         },
     ],
 

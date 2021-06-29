@@ -18,7 +18,7 @@ class ResultsTable extends Migration
             $table->integer('user_id');
             $table->integer('hit');
             $table->integer('miss');
-            $table->integer('left');
+            $table->string('difficulty');
             $table->timestamps();
         });
     }

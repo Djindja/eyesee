@@ -114,4 +114,26 @@ class GameController extends Controller
             return redirect("/game")->withErrors('Something went wrong!');
         }
     }
+
+    public function play(int $id)
+    {
+        $game = Game::find($id);
+
+        if (is_null($game)) {
+            return redirect("/game");
+        }
+
+        return View::make('play.index')->with('games', $game);
+    }
+
+    public function getGame(int $id)
+    {
+        $game = Game::find($id);
+
+        if (is_null($game)) {
+            return redirect("/game");
+        }
+
+        return response()->json($game->difficulty);
+    }
 }

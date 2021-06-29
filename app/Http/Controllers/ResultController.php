@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use Request;
 use Response;
 use Exception;
 use App\Models\Result;
-use Illuminate\Http\Request;
 
 class ResultController extends Controller
 {
@@ -41,7 +42,7 @@ class ResultController extends Controller
 
         $result->hit = Request::get('hit');
         $result->miss = Request::get('miss');
-        $result->left = Request::get('left');
+        $result->difficulty = Request::get('difficulty');
         $result->user_id = Auth::id();
 
         try {

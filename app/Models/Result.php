@@ -13,7 +13,7 @@ class Result extends Model
      * @var array
      */
     protected $fillable = [
-        'hit', 'miss', 'left'
+        'hit', 'miss', 'difficulty'
     ];
 
     /**

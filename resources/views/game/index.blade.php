@@ -40,10 +40,6 @@
       </table>
     </div>
     <button style="margin-top: 30px;" class="btn btn-primary btn-lg" onClick="window.open('{{url("dashboard/")}}', '_self');">Go to Dashboard</button>
-
-    <div id="app">
-      <router-view></router-view>
-    </div>
   </div>
 </div>
 @endsection

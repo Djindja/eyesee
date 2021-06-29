@@ -9,5 +9,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <button class="btn btn-primary btn-lg" onClick="window.open('{{url("game")}}', '_self');">Go to the list of all games</button>
         </div>
+        <div id="app">
+            <router-view></router-view>
+        </div>
     </div>
 </x-app-layout>

@@ -31,11 +31,13 @@ Route::group(["prefix" => "game"], function () {
     Route::get("/{id}", "App\Http\Controllers\GameController@edit");
     Route::post("/edit/{id}", "App\Http\Controllers\GameController@postEdit");
     Route::get("/delete/{id}", "App\Http\Controllers\GameController@delete");
+    Route::get("/get/{id}", "App\Http\Controllers\GameController@getGame");
 });
 
 /* routes for results */
 Route::post('/create', 'App\Http\Controllers\ResultController@store');
 Route::get('/get', 'App\Http\Controllers\ResultController@index');
 
+Route::get('/new-game/{id}', 'App\Http\Controllers\GameController@play');
 
 require __DIR__.'/auth.php';
