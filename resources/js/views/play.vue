@@ -81,9 +81,6 @@ export default {
         },
         saveResult() {
             axios.post(`/create`, { hit: this.hit.length, miss: this.miss.length, difficulty: this.difficulty })
-            .then(response => {
-                this.$router.push('/dashboard');
-            })
         },
         randNumber() {
             var nums = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],
@@ -113,7 +110,7 @@ export default {
             } else if(response.data === 'medium') {
                 response.data = 3500;
             } else {
-                response.data = 1000;
+                response.data = 2000;
             }
 
             this.number = this.randNumber()[0]

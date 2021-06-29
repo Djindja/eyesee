@@ -16,6 +16,7 @@ class ResultsTable extends Migration
         Schema::create('results', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
+            $table->string('user_name');
             $table->integer('hit');
             $table->integer('miss');
             $table->string('difficulty');

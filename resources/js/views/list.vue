@@ -15,14 +15,16 @@
             <th style="text-align: left; width: 20%;">Player Name</th>
             <th style="text-align: left; width: 20%;">Difficulty</th>
             <th style="text-align: left; width: 20%;">Hit</th>
+            <th style="text-align: left; width: 20%;">Miss</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(result, index) in results" :key="index" >
             <th style="text-align: left; width: 5%;" scope="row">{{index+1}}</th>
-            <td style="text-align: left; width: 30%;">{{result['user_id']}}</td>
+            <td style="text-align: left; width: 30%;">{{result['user_name']}}</td>
             <td style="text-align: left; width: 30%;">{{result['difficulty']}}</td>
             <td style="text-align: left; width: 30%;">{{result['hit']}}</td>
+            <td style="text-align: left; width: 30%;">{{result['miss']}}</td>
           </tr>
         </tbody>
       </table>

@@ -49,7 +49,8 @@ class ResultController extends Controller
         $result->hit = Request::get('hit');
         $result->miss = Request::get('miss');
         $result->difficulty = Request::get('difficulty');
-        $result->user_id = Auth::id();
+        $result->user_id = Auth::user()->id;
+        $result->user_name = Auth::user()->name;
 
         try {
             $result->save();
