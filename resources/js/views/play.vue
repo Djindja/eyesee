@@ -4,8 +4,9 @@
         <h3>
             Play Game
         </h3>
+        <br>
         <div class="form-group">
-            {{difficulty}}
+            Game Difficulty: <span style="color: red; font-weight: bold;">{{difficulty}}</span>
         <br>
         </div>
         <div class="form-group">
@@ -81,7 +82,7 @@ export default {
         saveResult() {
             axios.post(`/create`, { hit: this.hit.length, miss: this.miss.length, difficulty: this.difficulty })
             .then(response => {
-                this.$router.push('/game');
+                this.$router.push('/dashboard');
             })
         },
         randNumber() {
@@ -117,7 +118,7 @@ export default {
                 self.letter = '';
                 if (self.generatedNumbers.length >= 26) {
                     clearInterval(handle)
-                  //  self.saveResult()
+                    self.saveResult()
                 }
 
             }, response.data);
@@ -128,7 +129,9 @@ export default {
         }
     },
     mounted() {
-
+         axios.get(`/game/get/${this.id}`).then(response => {
+            this.difficulty = response.data
+         })
     }
 }
 </script>
